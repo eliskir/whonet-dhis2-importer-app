@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@dhis2/app-runtime": "^1.5.1",
     "@dhis2/d2-ui-core": "^5.3.11",
     "@dhis2/d2-ui-expression-manager": "^5.3.11",
     "@dhis2/d2-ui-favorites-dialog": "^5.3.11",
@@ -21,6 +22,7 @@
     "@dhis2/d2-ui-sharing-dialog": "^5.3.11",
     "@dhis2/d2-ui-table": "^5.3.11",
     "@dhis2/d2-ui-translation-dialog": "^5.3.11",
+    "@dhis2/ui-widgets": "^1.0.8",
     "axios": "^0.18.0",
     "crypto": "^1.0.1",
     "d2": "^31.7",
