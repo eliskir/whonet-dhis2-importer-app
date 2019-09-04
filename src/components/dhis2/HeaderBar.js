@@ -1,5 +1,4 @@
 import React from 'react';
-//import HeaderBar from '@dhis2/d2-ui-header-bar';
 import { HeaderBar } from '@dhis2/ui-widgets'
 import { DataProvider } from '@dhis2/app-runtime'
 
