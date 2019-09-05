@@ -21,7 +21,7 @@ import { hash } from '../components/helpers/Hash';
 import LoggerComponent from '../components/logger/LoggerComponent';
 import CsvMappingColumns from '../components/logger/CsvMappingColumns';
 import ImportResults from '../components/import-results/ImportResults';
-import { Button } from '@dhis2/ui-core'
+import { Button, Menu, SplitButton, MenuItem, Divider} from '@dhis2/ui-core'
 import { 
     getPrograms,
     getAttributes,
@@ -66,6 +66,7 @@ class WHONETFileReader extends React.Component {
             trackedEntityInstance: "",
             dataStoreNamespaceElements: [],
             dataStoreNamespaceAttributes: [],
+            settingsSplitButton: "",
         };
         this.uploadCSVFile = this.uploadCSVFile.bind(this);
             
@@ -605,13 +606,21 @@ class WHONETFileReader extends React.Component {
         * @returns-modal
         */     
         if(this.state.userAuthority === 'ALL'){
-          userAuthority = <Fab color='primary' aria-label='Edit' onClick={this.handleSettingModal} style={styleProps.styles.helpModalPosition}>
-            <SettingsIcon style={styleProps.styles.settingIcon} />
-          </Fab>;
+          userAuthority = <Button small onClick={this.handleSettingModal}>Global settings</Button>;
         }
-        multipleLabModal = <Fab color='primary' aria-label="Edit" onClick={this.handleMultipleLabSettingModal} style={styleProps.styles.helpModalPosition}>
-            <AddCircleRounded style={styleProps.styles.settingIcon} />
-          </Fab>;       
+        multipleLabModal = <Button small onClick={this.handleMultipleLabSettingModal}>Settings for this org unit</Button>;
+        let settingsSplitButton = 
+        <SplitButton
+          small
+          component = {
+            <Menu>
+              {userAuthority}
+              {multipleLabModal}
+            </Menu>
+          }>
+          Settings
+        </SplitButton>
+          
         
         let helpModal = <Fab color="primary" aria-label="Edit" onClick={this.handleHelpModal} style={styleProps.styles.helpModalPosition}>
                        <ViewSupportIcon />
@@ -622,22 +631,9 @@ class WHONETFileReader extends React.Component {
             <CardText style={styleProps.styles.cardText}>
                 
               <h3 style={styleProps.styles.cardHeader}>IMPORT WHONET CSV FILE 
-              { multipleLabModal }{ userAuthority }
+              { settingsSplitButton }
               </h3> 
               
-              {/*
-              <InputField
-                label="Organisation Unit"
-                value={this.props.orgUnit}
-                disabled
-                onChange={(value) => this.onChangeValue("orgUnitField", value)}
-                name = "selectedOrgUnit"
-              /><input
-                type="hidden" id="selectedOrgUnitId" value ={this.props.orgUnitId}
-                />
-              <div style={styleProps.styles.buttonPosition}></div>
-               */}
-               
               <div> Your organisation unit: {this.props.orgUnit}</div>
 
               <input
