@@ -606,8 +606,10 @@ class WHONETFileReader extends React.Component {
         * @returns-modal
         */     
         if(this.state.userAuthority === 'ALL'){
+          //TODO: Change this button to a MenuItem when bug in DHIS2 UI is fixed. 
           userAuthority = <Button small onClick={this.handleSettingModal}>Global settings</Button>;
         }
+        //TODO: Change this button to a MenuItem when bug in DHIS2 UI is fixed. 
         multipleLabModal = <Button small onClick={this.handleMultipleLabSettingModal}>Settings for this org unit</Button>;
         let settingsSplitButton = 
         <SplitButton
