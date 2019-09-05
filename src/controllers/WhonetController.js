@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Papa from 'papaparse';
-import Card from 'material-ui/Card/Card';
+//import Card from 'material-ui/Card/Card';
 import CardText from 'material-ui/Card/CardText';
 //import {Button} from '@dhis2/d2-ui-core';
 import {InputField} from '@dhis2/d2-ui-core';
@@ -21,7 +21,7 @@ import { hash } from '../components/helpers/Hash';
 import LoggerComponent from '../components/logger/LoggerComponent';
 import CsvMappingColumns from '../components/logger/CsvMappingColumns';
 import ImportResults from '../components/import-results/ImportResults';
-import { Button, Menu, SplitButton, MenuItem, Divider} from '@dhis2/ui-core'
+import { Button, Menu, SplitButton, MenuItem, Card} from '@dhis2/ui-core'
 import { 
     getPrograms,
     getAttributes,
@@ -624,15 +624,17 @@ class WHONETFileReader extends React.Component {
         </SplitButton>
           
         
-        let helpModal = <Fab color="primary" aria-label="Edit" onClick={this.handleHelpModal} style={styleProps.styles.helpModalPosition}>
+        let helpModal = <Button small onClick={this.handleHelpModal} >Data explanation</Button>
+
+        /*<Fab color="primary" aria-label="Edit" onClick={this.handleHelpModal} style={styleProps.styles.helpModalPosition}>
                        <ViewSupportIcon />
                       </Fab>
+        */
     return (
       <div>
-          <Card style={styleProps.styles.card}>
-            <CardText style={styleProps.styles.cardText}>
-                
-              <h3 style={styleProps.styles.cardHeader}>IMPORT WHONET CSV FILE 
+          <Card>
+            
+              <h3 style={styleProps.styles.cardHeader}>Select WHONET csv file
               { settingsSplitButton }
               </h3> 
               
@@ -652,19 +654,12 @@ class WHONETFileReader extends React.Component {
 
               <Button type='button' onClick={this.fileUploadPreAlert} primary>Import</Button>
 
-              <br /><br />                  
 
-            </CardText>
-            <CardText style={styleProps.styles.cardText}>
-              {spinner} 
-            </CardText>
             {modal}
           </Card>
-          <Card style={styleProps.styles.card}>
-              <CardText style={styleProps.styles.cardText}>
-              <h3 style={styleProps.styles.cardHeader}>IMPORT RESULT {helpModal}</h3>
+          <Card>
+              <h3 style={styleProps.styles.cardHeader}>Result {helpModal}</h3>
               {teiResponse}
-              </CardText>
           </Card>
           {logger}
       </div>

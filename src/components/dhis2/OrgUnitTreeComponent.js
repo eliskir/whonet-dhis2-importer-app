@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as styleProps from '../ui/Styles';
-import Card from 'material-ui/Card/Card';
+//import Card from 'material-ui/Card/Card';
 import CardText from 'material-ui/Card/CardText';
 import SingleSelection from './org-unit-tree/OrgUnitSingleSelection';
 import WhonetController from '../../controllers/WhonetController';
 import CustomOrgUnitTreeView from './custom-orgunit-tree/CustomOrgUnitTreeView';
 import CustomTree from './custom-orgunit-tree/CustomTree';
 import 'regenerator-runtime/runtime';
+import { Card } from '@dhis2/ui-core'
 import { 
     getMe,
 } from '../api/API';
@@ -293,15 +294,11 @@ export default class OrgUnitTreeComponent extends React.Component {
 
 		return (
       <div>
-          <Card style={styleProps.styles.cardOrgUnitTree}>
-              <CardText style={styleProps.styles.cardText}>
-                  <h3 style={styleProps.styles.cardHeader}>Select Organization Unit</h3>
-                  {d2OrgUnit}
+          <Card>
+                <h3 style={styleProps.styles.cardHeader}>Select Organization Unit</h3>
+                {d2OrgUnit}
               	{customOrgUnit}	
-
               	{customTree}
-
-              </CardText>
           </Card>
           <WhonetController d2={this.state.d2} orgUnitId={this.state.userOrgUnitId} orgUnit={this.state.userOrgUnitName}/>
       </div>
