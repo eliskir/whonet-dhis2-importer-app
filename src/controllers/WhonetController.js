@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Papa from 'papaparse';
 import Card from 'material-ui/Card/Card';
 import CardText from 'material-ui/Card/CardText';
-import {Button} from '@dhis2/d2-ui-core';
+//import {Button} from '@dhis2/d2-ui-core';
 import {InputField} from '@dhis2/d2-ui-core';
 import swal from 'sweetalert';
 import LinearProgress from '../components/ui/LinearProgress';
@@ -21,6 +21,7 @@ import { hash } from '../components/helpers/Hash';
 import LoggerComponent from '../components/logger/LoggerComponent';
 import CsvMappingColumns from '../components/logger/CsvMappingColumns';
 import ImportResults from '../components/import-results/ImportResults';
+import { Button } from '@dhis2/ui-core'
 import { 
     getPrograms,
     getAttributes,
@@ -42,7 +43,7 @@ class WHONETFileReader extends React.Component {
         const d2        = props.d2;
         this.state = {
             csvfile     : undefined,
-            orgUnitField: '',
+            orgUnitField: "",            
             d2          : d2,        
             loading     : false,
             error       : false,
@@ -109,8 +110,7 @@ class WHONETFileReader extends React.Component {
             attributes   : response.data.trackedEntityAttributes
           });
         }  
-        });       
-       
+        });    
     }
     handleChangeFileUpload = event => {
 
@@ -181,7 +181,8 @@ class WHONETFileReader extends React.Component {
         let attributeId  = "";
         let elementValue = "";
         let teiPayloadString = {};
-        let orgUnitId = document.getElementById('selectedOrgUnitId').value;
+        //let orgUnitId = document.getElementById('selectedOrgUnitId').value;
+        let orgUnitId = this.props.orgUnitId;
         let trackedEntityJson, eventDate;
         await getDataStoreNameSpace(orgUnitId).then((response) => {
           this.setState({
@@ -447,6 +448,7 @@ class WHONETFileReader extends React.Component {
         this.setState({ [field]: value });
     };
 
+
     /**
     * {orgUnitId} returns selected org unit from left sidebar
     * {checkOrgUnitInProgram} returns whether the selected org unit assigned or not
@@ -454,7 +456,8 @@ class WHONETFileReader extends React.Component {
     */
     fileUploadPreAlert = () =>{
 
-        let orgUnitId = document.getElementById('selectedOrgUnitId').value;
+        //let orgUnitId = document.getElementById('selectedOrgUnitId').value;
+        let orgUnitId = this.props.orgUnitId;        
         if(typeof orgUnitId === 'undefined' || orgUnitId === null || orgUnitId === ''){
             swal({
                 title: "Sorry! Please select organisation unit first!",
@@ -618,10 +621,11 @@ class WHONETFileReader extends React.Component {
           <Card style={styleProps.styles.card}>
             <CardText style={styleProps.styles.cardText}>
                 
-              <h3 style={styleProps.styles.cardHeader}>IMPORT WHONET CSV FILE! 
+              <h3 style={styleProps.styles.cardHeader}>IMPORT WHONET CSV FILE 
               { multipleLabModal }{ userAuthority }
               </h3> 
-
+              
+              {/*
               <InputField
                 label="Organisation Unit"
                 value={this.props.orgUnit}
@@ -632,6 +636,9 @@ class WHONETFileReader extends React.Component {
                 type="hidden" id="selectedOrgUnitId" value ={this.props.orgUnitId}
                 />
               <div style={styleProps.styles.buttonPosition}></div>
+               */}
+               
+              <div> Your organisation unit: {this.props.orgUnit}</div>
 
               <input
                 type="file"
@@ -643,9 +650,9 @@ class WHONETFileReader extends React.Component {
                 onChange={this.handleChangeFileUpload}                  
                 accept=".csv"
               />
-              <div style={styleProps.styles.buttonPosition}></div>
+              <div style={this.state.orgUnit}></div>
 
-              <Button type="submit" raised color='primary' onClick={this.fileUploadPreAlert}>IMPORT</Button>
+              <Button type='button' onClick={this.fileUploadPreAlert} primary>Import</Button>
 
               <br /><br />                  
 

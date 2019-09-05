@@ -1,6 +1,6 @@
-// export const baseUrl = 'http://apps.hispindia.org/amrtest/';
+ export const baseUrl = 'http://apps.hispindia.org/amrtest/';
 // export const baseUrl = '../../../';
-export const baseUrl = 'http://localhost:8080/dhis/';
+//export const baseUrl = 'http://localhost:8080/dhis/';
 export const fetchOptions = {
   headers: { 
     Accept: 'application/json',
