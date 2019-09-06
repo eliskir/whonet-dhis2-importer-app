@@ -608,7 +608,6 @@ class WHONETFileReader extends React.Component {
         multipleLabModal = <MenuItem label="Settings for this org unit" onClick={this.handleMultipleLabSettingModal} />;
         let settingsSplitButton = 
         <SplitButton
-        className = "settingsSplitButton"
           small
           component = {
             <Menu>
@@ -623,14 +622,19 @@ class WHONETFileReader extends React.Component {
 
     return (
       <div className="whoNetController" >
+      <div>
           <Card className="fileUploadCard">
             
-              {/*<h3 style={styleProps.styles.cardHeader}>Select WHONET csv file*/}
-              <h3>Select WHONET csv file</h3>
-              { settingsSplitButton }
+              <div className="fileUploadCardTopContent">
+                <h3>Select WHONET csv file</h3>
+                <div className="settingsSplitButton">
+                  { settingsSplitButton }
+                </div>
+              </div>
            
               <div> Your organisation unit: {this.props.orgUnit}</div>
 
+              <div className="fileUploadCardBottomContent">
               <input
                 type="file"
                 ref={input => {
@@ -642,14 +646,20 @@ class WHONETFileReader extends React.Component {
                 accept=".csv"
               />
               <div style={this.state.orgUnit}></div>
-
               <Button type='button' onClick={this.fileUploadPreAlert} primary>Import</Button>
+              </div>
 
 
             {modal}
           </Card>
-          <Card>
-              <h3 style={styleProps.styles.cardHeader}>Result {helpModal}</h3>
+          </div>
+          <Card className="resultCard">
+              <div className="resultContainer">
+                <h3 style={styleProps.styles.cardHeader}>Result </h3>
+                <div className="helpModalContainer">
+                  {helpModal}
+                </div>
+              </div>
               {teiResponse}
           </Card>
           {logger}

@@ -1,21 +1,48 @@
 .pageContainer {
+    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: row; 
 }
 .orgUnitTreeCard {
-    height: 100% !important;
+    padding: 1%;
     width: auto !important;
-    padding: 1%;     
+    max-width: 40%;
+    overflow: auto; 
 }
 .whoNetController {
-    height: 50vh !important; 
-    padding: 1%;         
-    float: right;  
+    flex-grow: 1;
+    width: auto;
+    max-width: 75%;
 }
 .fileUploadCard {
-    width: 100% !important;
-    height: 50% !important; 
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 1%;    
+    height: 20vh !important; 
+}
+.fileUploadCardTopContent {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
 }
 .settingsSplitButton {
-    display: block;
+    margin-top: 2%;
 }
+.resultCard {
+}
+.fileUploadCardBottomContent {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+ }
+ .resultContainer {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+ }
+ .helpModalContainer {
+     margin-top: 2%;
+ }
