@@ -294,7 +294,7 @@ export default class OrgUnitTreeComponent extends React.Component {
 		// console.log("this.state.orgUnitLevel: ", this.state.orgUnitLevel);		
 
 		return (
-      <div>
+      <div className="pageContainer">
           <Card className="orgUnitTreeCard">
                 <h3 style={styleProps.styles.cardHeader}>Select Organization Unit</h3>
                 {d2OrgUnit}

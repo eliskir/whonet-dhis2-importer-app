@@ -622,14 +622,13 @@ class WHONETFileReader extends React.Component {
         let helpModal = <Button small onClick={this.handleHelpModal} >Data explanation</Button>
 
     return (
-      <div>
-          <Card className="card">
+      <div className="whoNetController" >
+          <Card className="fileUploadCard">
             
               {/*<h3 style={styleProps.styles.cardHeader}>Select WHONET csv file*/}
               <h3>Select WHONET csv file</h3>
               { settingsSplitButton }
            
-              
               <div> Your organisation unit: {this.props.orgUnit}</div>
 
               <input

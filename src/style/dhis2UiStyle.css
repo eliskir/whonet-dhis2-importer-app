@@ -1,10 +1,21 @@
-.settingsSplitButton {
-    display: block;
-}
-.card {
-    
+.pageContainer {
+    display: flex;
+    flex-direction: row; 
 }
 .orgUnitTreeCard {
-    float: left; 
-    width: 50%;
+    height: 100% !important;
+    width: auto !important;
+    padding: 1%;     
+}
+.whoNetController {
+    height: 50vh !important; 
+    padding: 1%;         
+    float: right;  
+}
+.fileUploadCard {
+    width: 100% !important;
+    height: 50% !important; 
+}
+.settingsSplitButton {
+    display: block;
 }
