@@ -8,7 +8,8 @@ import WhonetController from '../../controllers/WhonetController';
 import CustomOrgUnitTreeView from './custom-orgunit-tree/CustomOrgUnitTreeView';
 import CustomTree from './custom-orgunit-tree/CustomTree';
 import 'regenerator-runtime/runtime';
-import { Card } from '@dhis2/ui-core'
+import { Card } from '@dhis2/ui-core';
+import '../../style/dhis2UiStyle.css';
 import { 
     getMe,
 } from '../api/API';
@@ -294,7 +295,7 @@ export default class OrgUnitTreeComponent extends React.Component {
 
 		return (
       <div>
-          <Card>
+          <Card className="orgUnitTreeCard">
                 <h3 style={styleProps.styles.cardHeader}>Select Organization Unit</h3>
                 {d2OrgUnit}
               	{customOrgUnit}	

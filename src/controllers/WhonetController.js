@@ -1,9 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Papa from 'papaparse';
-//import Card from 'material-ui/Card/Card';
 import CardText from 'material-ui/Card/CardText';
-//import {Button} from '@dhis2/d2-ui-core';
 import {InputField} from '@dhis2/d2-ui-core';
 import swal from 'sweetalert';
 import LinearProgress from '../components/ui/LinearProgress';
@@ -21,7 +19,8 @@ import { hash } from '../components/helpers/Hash';
 import LoggerComponent from '../components/logger/LoggerComponent';
 import CsvMappingColumns from '../components/logger/CsvMappingColumns';
 import ImportResults from '../components/import-results/ImportResults';
-import { Button, Menu, SplitButton, MenuItem, Card} from '@dhis2/ui-core'
+import { Button, Menu, SplitButton, MenuItem, Card} from '@dhis2/ui-core';
+import '../style/dhis2UiStyle.css';
 import { 
     getPrograms,
     getAttributes,
@@ -182,7 +181,6 @@ class WHONETFileReader extends React.Component {
         let attributeId  = "";
         let elementValue = "";
         let teiPayloadString = {};
-        //let orgUnitId = document.getElementById('selectedOrgUnitId').value;
         let orgUnitId = this.props.orgUnitId;
         let trackedEntityJson, eventDate;
         await getDataStoreNameSpace(orgUnitId).then((response) => {
@@ -457,7 +455,6 @@ class WHONETFileReader extends React.Component {
     */
     fileUploadPreAlert = () =>{
 
-        //let orgUnitId = document.getElementById('selectedOrgUnitId').value;
         let orgUnitId = this.props.orgUnitId;        
         if(typeof orgUnitId === 'undefined' || orgUnitId === null || orgUnitId === ''){
             swal({
@@ -606,13 +603,12 @@ class WHONETFileReader extends React.Component {
         * @returns-modal
         */     
         if(this.state.userAuthority === 'ALL'){
-          //TODO: Change this button to a MenuItem when bug in DHIS2 UI is fixed. 
-          userAuthority = <Button small onClick={this.handleSettingModal}>Global settings</Button>;
+          userAuthority = <MenuItem label="Global settings" onClick={this.handleSettingModal}/>;
         }
-        //TODO: Change this button to a MenuItem when bug in DHIS2 UI is fixed. 
-        multipleLabModal = <Button small onClick={this.handleMultipleLabSettingModal}>Settings for this org unit</Button>;
+        multipleLabModal = <MenuItem label="Settings for this org unit" onClick={this.handleMultipleLabSettingModal} />;
         let settingsSplitButton = 
         <SplitButton
+        className = "settingsSplitButton"
           small
           component = {
             <Menu>
@@ -622,21 +618,17 @@ class WHONETFileReader extends React.Component {
           }>
           Settings
         </SplitButton>
-          
         
         let helpModal = <Button small onClick={this.handleHelpModal} >Data explanation</Button>
 
-        /*<Fab color="primary" aria-label="Edit" onClick={this.handleHelpModal} style={styleProps.styles.helpModalPosition}>
-                       <ViewSupportIcon />
-                      </Fab>
-        */
     return (
       <div>
-          <Card>
+          <Card className="card">
             
-              <h3 style={styleProps.styles.cardHeader}>Select WHONET csv file
+              {/*<h3 style={styleProps.styles.cardHeader}>Select WHONET csv file*/}
+              <h3>Select WHONET csv file</h3>
               { settingsSplitButton }
-              </h3> 
+           
               
               <div> Your organisation unit: {this.props.orgUnit}</div>
 
