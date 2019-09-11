@@ -46,3 +46,8 @@
  .helpModalContainer {
      margin-top: 2%;
  }
+
+
+ .elementsTable {
+    width: auto !important;
+ }

@@ -10,6 +10,7 @@ import swal from 'sweetalert';
 import LinearProgress from '../../ui/LinearProgress';
 import * as styleProps  from '../../ui/Styles';
 import * as config  from '../../../config/Config';
+import { Card } from '@dhis2/ui-core';
 import { 
     metaDataUpdate,
     getAttributeDetails,
@@ -217,7 +218,7 @@ class Attributes extends React.Component {
       spinner = <LinearProgress />
     }
     return (
-      <Paper className={classes.root}  style={styleProps.styles.tableScroll}>
+      <Card className={classes.root}  style={styleProps.styles.tableScroll}>
         <form onSubmit={(e) => this.handleSubmitAttributes(e)} id="whonetsetting">
         <Table className={classes.table}>
           <TableHead>
@@ -240,7 +241,7 @@ class Attributes extends React.Component {
         <input type="submit" value="Save Attributes" style={styleProps.styles.submitButton}/>
         </form> 
         {spinner}
-      </Paper>
+      </Card>
     )
   }
   

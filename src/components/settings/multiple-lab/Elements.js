@@ -10,6 +10,8 @@ import swal from 'sweetalert';
 import LinearProgress from '../../ui/LinearProgress';
 import * as styleProps  from '../../ui/Styles';
 import * as config  from '../../../config/Config';
+import { Card } from '@dhis2/ui-core';
+import '../../../style/dhis2UiStyle.css';
 import { 
     metaDataUpdate,
     getElementDetails,
@@ -221,16 +223,17 @@ class DataElementsTable extends React.Component {
       spinner = <LinearProgress />
     }
     return (
+      /*
       <Paper className={classes.root}  style={styleProps.styles.tableScroll}>
         <form onSubmit={(e) => this.handleSubmitElements(e)} id="whonetsetting">
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> DATA ELEMENTS </h3></strong>
+                <strong><h3> DHIS2 data element name </h3></strong>
               </TableCell>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> CODES</h3></strong>
+                <strong><h3> WHONET data element name </h3></strong>
               </TableCell>
               <TableCell style={styleProps.styles.tableHeader}> 
                 <strong><h3> ORG UNIT CODES </h3></strong> 
@@ -245,6 +248,31 @@ class DataElementsTable extends React.Component {
         </form> 
         {spinner}
       </Paper>
+      */
+      <Card className="elementsTable" open large className={classes.root} >
+          <form onSubmit={(e) => this.handleSubmitElements(e)} id="whonetsetting">
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <TableCell style={styleProps.styles.tableHeader}> 
+                  <strong><h3> DHIS2 data element name </h3></strong>
+                </TableCell>
+                <TableCell style={styleProps.styles.tableHeader}> 
+                  <strong><h3> WHONET data element name </h3></strong>
+                </TableCell>
+                <TableCell style={styleProps.styles.tableHeader}> 
+                  <strong><h3> ORG UNIT CODES </h3></strong> 
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>            
+              {content}             
+            </TableBody>          
+          </Table>
+          <input type="submit" value="Save Elements" style={styleProps.styles.submitButton}/>
+          </form> 
+          {spinner}
+      </Card>
     )
   }
   
