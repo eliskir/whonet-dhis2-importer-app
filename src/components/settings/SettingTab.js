@@ -1,5 +1,4 @@
 import React from 'react';
-//import { Tabs, Tab } from '@dhis2/d2-ui-core';
 import Elements from './multiple-lab/Elements';
 import Attributes from './multiple-lab/Attributes';
 import Options from './multiple-lab/Options';
@@ -10,7 +9,7 @@ class SettingTab extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          selectedTab   : 'elements',
+          selectedTab   : '',
         };
       }
 
@@ -18,29 +17,19 @@ class SettingTab extends React.Component {
         let orgUnitId = this.props.orgUnitId;
         let orgUnitName = this.props.orgUnitName;
         let elements, attributes, options;
-        /*
-        if (this.props.settingType === 'multiLab') {
-          elements = <Tab label='Data Elements'>
-                    <Elements orgUnitId={orgUnitId} orgUnitName={orgUnitName}/> 
-                  </Tab>;
-          attributes = <Tab label='Attributes'>
-                     <Attributes orgUnitId={orgUnitId} orgUnitName={orgUnitName}/> 
-                  </Tab>;
-          options = <Tab label='Options'>
-                     <Options orgUnitId={orgUnitId} orgUnitName={orgUnitName}/> 
-                  </Tab>;        
-        } else {
-          elements = <Tab label='Data Elements'>
-                    <DataElementsTable /> 
-                  </Tab>;
-          attributes = <Tab label='Attributes'>
-                     <AttributesTable /> 
-                  </Tab>;
-        }
-          */
       
         let selectedElement = '';
         switch (this.state.selectedTab) {
+            case '':
+                if (this.props.settingType === 'multiLab') {
+                    selectedElement = <Elements orgUnitId={orgUnitId} orgUnitName={orgUnitName}/>;  
+                    this.setState({selectedTab: 'elements'})                
+                }
+                else {
+                    selectedElement = <DataElementsTable />;
+                    this.setState({selectedTab: 'dataElementsTable'});
+                }
+            break; 
             case 'elements':
                 selectedElement = <Elements orgUnitId={orgUnitId} orgUnitName={orgUnitName}/>;
             break;

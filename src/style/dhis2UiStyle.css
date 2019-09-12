@@ -51,3 +51,13 @@
  .elementsTable {
     width: auto !important;
  }
+
+ .alertBar {
+     z-index: 2; 
+     position: absolute; 
+ }
+
+ .editDataElementLink {
+     text-decoration: none;
+     color: black; 
+ }

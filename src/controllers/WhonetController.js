@@ -19,7 +19,7 @@ import { hash } from '../components/helpers/Hash';
 import LoggerComponent from '../components/logger/LoggerComponent';
 import CsvMappingColumns from '../components/logger/CsvMappingColumns';
 import ImportResults from '../components/import-results/ImportResults';
-import { Button, Menu, SplitButton, MenuItem, Card} from '@dhis2/ui-core';
+import { Button, Menu, SplitButton, MenuItem, Card, Modal} from '@dhis2/ui-core';
 import '../style/dhis2UiStyle.css';
 import { 
     getPrograms,
@@ -66,6 +66,7 @@ class WHONETFileReader extends React.Component {
             dataStoreNamespaceElements: [],
             dataStoreNamespaceAttributes: [],
             settingsSplitButton: "",
+            feedBackToUser: undefined,
         };
         this.uploadCSVFile = this.uploadCSVFile.bind(this);
             
@@ -519,18 +520,22 @@ class WHONETFileReader extends React.Component {
     * @returns isSettingModalOpen true
     */
     handleMultipleLabSettingModal = () => {
-
       if(this.props.orgUnitId.length === 0){
-        swal({
-          title: "Sorry! Please select your organisation first!",
-          icon: "warning",
-        });
-      } else {
+        this.setState({feedBackToUser: 
+          <Modal small open>
+            <Modal.Title>Please select an org. unit first</Modal.Title>
+            <Modal.Content></Modal.Content>
+            <Modal.Actions><Button onClick={()=>this.setState({feedBackToUser: ''})}>Close</Button></Modal.Actions>
+          </Modal>
+        }); 
+      } 
+      else {
         this.setState({ 
           isMultipleLabSettingModalOpen: !this.state.isMultipleLabSettingModalOpen,
         });
       }
     };
+
 
     /**
     * @returns isHelpModalOpen true
@@ -622,6 +627,7 @@ class WHONETFileReader extends React.Component {
 
     return (
       <div className="whoNetController" >
+      {this.state.feedBackToUser}
       <div>
           <Card className="fileUploadCard">
             

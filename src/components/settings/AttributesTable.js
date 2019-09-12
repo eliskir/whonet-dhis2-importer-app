@@ -94,7 +94,7 @@ class AttributesTable extends React.Component {
         spinner = <LinearProgress />
       }
       return (
-        <Paper className={classes.root}  style={styleProps.styles.tableScroll}>
+        <div>
           <form onSubmit={(e) => this.handleSubmitAttributes(e)} id="whonetsetting">
           <Table className={classes.table}>
             <TableHead>
@@ -117,7 +117,7 @@ class AttributesTable extends React.Component {
           <input type="submit" value="Save Attributes" style={styleProps.styles.submitButton}/>
           </form> 
           {spinner}
-        </Paper>
+        </div>
       )
   }
   handleSubmitAttributes(e) {

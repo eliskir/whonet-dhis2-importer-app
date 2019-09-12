@@ -249,7 +249,7 @@ class DataElementsTable extends React.Component {
         {spinner}
       </Paper>
       */
-      <Card className="elementsTable" open large className={classes.root} >
+      <div>
           <form onSubmit={(e) => this.handleSubmitElements(e)} id="whonetsetting">
           <Table className={classes.table}>
             <TableHead>
@@ -261,7 +261,7 @@ class DataElementsTable extends React.Component {
                   <strong><h3> WHONET data element name </h3></strong>
                 </TableCell>
                 <TableCell style={styleProps.styles.tableHeader}> 
-                  <strong><h3> ORG UNIT CODES </h3></strong> 
+                  <strong><h3> Special name for this org. unit </h3></strong> 
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -272,7 +272,7 @@ class DataElementsTable extends React.Component {
           <input type="submit" value="Save Elements" style={styleProps.styles.submitButton}/>
           </form> 
           {spinner}
-      </Card>
+      </div>
     )
   }
   

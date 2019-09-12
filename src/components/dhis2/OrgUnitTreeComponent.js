@@ -291,7 +291,7 @@ export default class OrgUnitTreeComponent extends React.Component {
   		let node =this.state.tree;
 			customTree = <CustomTree node={node}/>
 		}
-		// console.log("this.state.orgUnitLevel: ", this.state.orgUnitLevel);		
+		 console.log("this.state.orgUnitLevel: ", this.state.userOrgUnitName);		
 
 		return (
       <div className="pageContainer">

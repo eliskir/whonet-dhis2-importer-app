@@ -241,7 +241,7 @@ class OptionsTable extends React.Component {
       spinner = <LinearProgress />
     }
     return (
-      <Card className={classes.root}  style={styleProps.styles.tableScroll}>
+      <div >
         <form onSubmit={(e) => this.handleOptionsSubmit(e)} id="whonetsetting">
         <Table className={classes.table}>
           <TableHead>
@@ -267,7 +267,7 @@ class OptionsTable extends React.Component {
         <input type="submit" value="Save Options" style={styleProps.styles.submitButton}/>
         </form> 
         {spinner}
-      </Card>
+      </div>
     )
   }
   

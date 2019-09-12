@@ -28,18 +28,10 @@ class MappingModal extends React.Component {
     }
     return (
       <div>
-        <Modal
-          large
-          open={this.state.open}
-          onClose={this.handleClose}
-        >
+        <Modal large open={this.state.open} onClose={this.handleClose}>
           <Modal.Content>
-          <Card>
-              <CardText style={styleProps.styles.cardText}>
                 {modalTitle}
                 <Tabs settingType={this.props.settingType} orgUnitId={orgUnitId} orgUnitName={orgUnitName}/>
-              </CardText>
-          </Card>
           </Modal.Content>
           <Modal.Actions>
             <Button type="button" onClick={this.props.handleModal}>Cancel</Button>

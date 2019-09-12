@@ -5,11 +5,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import swal from 'sweetalert';
 import LinearProgress from '../ui/LinearProgress';
 import * as styleProps  from '../ui/Styles';
 import * as config  from '../../config/Config';
+import { Button } from '@dhis2/ui-core';
+import '../../style/dhis2UiStyle.css';
 import { 
     metaDataUpdate,
     getElementDetails,
@@ -69,24 +71,17 @@ class DataElementsTable extends React.Component {
     const classes = this.props;
     const {dataElements} = this.state;
     let content = dataElements.map(datum => {
-      let editUrl = config.baseUrl+"dhis-web-maintenance/#/edit/dataElementSection/dataElement/"+datum.dataElement.id;
+    let editUrl = config.baseUrl+"dhis-web-maintenance/#/edit/dataElementSection/dataElement/"+datum.dataElement.id;
       //datum.dataElement.attributeValues.map( val => val.value) for meta attributes
       return (
         <TableRow key={datum.dataElement.id}>
           <TableCell component="th" scope="row" style={styleProps.styles.tableHeader}>
-            {datum.dataElement.name}
+          <a href={editUrl} target="_blank" title="Edit" className="editDataElementLink">{datum.dataElement.name}</a>
           </TableCell>
           <TableCell style={styleProps.styles.tableHeader}>
           <input type="text" id={datum.dataElement.id} value={datum.dataElement.code || ''}
             onChange={this.handleInputChange} style={styleProps.styles.inputText}/>
-          </TableCell>  
-          <TableCell style={styleProps.styles.tableHeader}>
-            <a href={editUrl} target="_blank">
-              <Button variant="contained" component="span" className={classes.button}>
-                Edit
-              </Button> 
-            </a> 
-          </TableCell>  
+          </TableCell>   
 
         </TableRow>
       )
@@ -96,20 +91,18 @@ class DataElementsTable extends React.Component {
       spinner = <LinearProgress />
     }
     return (
-      <Paper className={classes.root}  style={styleProps.styles.tableScroll}>
+      <div>
         <form onSubmit={(e) => this.handleSubmitElements(e)} id="whonetsetting">
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> DATA ELEMENTS</h3></strong>
+                <strong><h3>Data elements</h3></strong>
               </TableCell>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> CODES </h3></strong> 
+                <strong><h3> Codes </h3></strong> 
               </TableCell>
-              <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> EDIT IN DHIS2 </h3></strong> 
-              </TableCell>
+
             </TableRow>
           </TableHead>
           <TableBody>            
@@ -119,7 +112,7 @@ class DataElementsTable extends React.Component {
         <input type="submit" value="Save Elements" style={styleProps.styles.submitButton}/>
         </form> 
         {spinner}
-      </Paper>
+      </div>
     )
   }
   handleSubmitElements(e) {
