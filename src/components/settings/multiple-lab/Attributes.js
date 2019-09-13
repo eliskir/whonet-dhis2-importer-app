@@ -224,13 +224,13 @@ class Attributes extends React.Component {
           <TableHead>
             <TableRow>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> ATTRIBUTES</h3></strong>
+                <strong><h3> Attributes </h3></strong>
               </TableCell>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> CODES</h3></strong>
+                <strong><h3> Codes</h3></strong>
               </TableCell>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> ORG UNIT CODES </h3></strong> 
+                <strong><h3> Org. unit codes </h3></strong> 
               </TableCell>
             </TableRow>
           </TableHead>

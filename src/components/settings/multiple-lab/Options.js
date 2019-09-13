@@ -247,16 +247,16 @@ class OptionsTable extends React.Component {
           <TableHead>
             <TableRow>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> OPTION SETS </h3></strong>
+                <strong><h3> Option sets </h3></strong>
               </TableCell>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> OPTION NAME</h3></strong>
+                <strong><h3> Option name </h3></strong>
               </TableCell>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> OPTION CODE</h3></strong>
+                <strong><h3> Option code</h3></strong>
               </TableCell>
               <TableCell style={styleProps.styles.tableHeader}> 
-                <strong><h3> MAP CODE </h3></strong> 
+                <strong><h3> Map code </h3></strong> 
               </TableCell>
             </TableRow>
           </TableHead>

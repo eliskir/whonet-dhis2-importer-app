@@ -27,37 +27,27 @@
     flex-direction: row; 
     justify-content: space-between;
 }
-.settingsSplitButton {
-    margin-top: 2%;
-}
-.resultCard {
-}
 .fileUploadCardBottomContent {
     margin-top: 2%;
     display: flex;
     flex-direction: row; 
     justify-content: space-between;
  }
- .resultContainer {
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-between;
+ .resultCard {
+     margin-top: 2%;
  }
  .helpModalContainer {
      margin-top: 2%;
  }
-
-
  .elementsTable {
     width: auto !important;
  }
-
  .alertBar {
      z-index: 2; 
      position: absolute; 
  }
-
  .editDataElementLink {
      text-decoration: none;
      color: black; 
  }
+ 

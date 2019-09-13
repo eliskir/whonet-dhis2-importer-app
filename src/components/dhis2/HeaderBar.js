@@ -7,10 +7,10 @@ const baseUrl = process.env.REACT_APP_DHIS2_BASE_URL;
 const apiVersion = 30;
 
 
-export default function(props) {
+export default function (props) {
     return (
         <DataProvider baseUrl={baseUrl} apiVersion={apiVersion}>
-            <HeaderBar appName={props.appName}/>
+            <HeaderBar appName={props.appName} />
         </DataProvider>
     )
 

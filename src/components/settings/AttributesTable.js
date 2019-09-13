@@ -73,18 +73,11 @@ class AttributesTable extends React.Component {
       return (
         <TableRow key={datum.id}>
           <TableCell component="th" scope="row" style={styleProps.styles.tableHeader}>
-            {datum.name}
+          <a href={editUrl} target="_blank" title="Edit" className="editDataElementLink">{datum.name}</a>
           </TableCell>
           <TableCell style={styleProps.styles.tableHeader}>
           <input type="text" id={datum.id} value={datum.code}
             onChange={this.handleInputChange} style={styleProps.styles.inputText}/>
-          </TableCell> 
-          <TableCell style={styleProps.styles.tableHeader}>
-          <a href={editUrl} target="_blank">
-            <Button variant="contained" component="span" className={classes.button}>
-              Edit
-            </Button> 
-          </a>
           </TableCell>          
         </TableRow>
       )
@@ -100,13 +93,10 @@ class AttributesTable extends React.Component {
             <TableHead>
               <TableRow>
                 <TableCell style={styleProps.styles.tableHeader}> 
-                  <strong><h3> ATTRIBUTES</h3></strong>
+                  <strong><h3> Attributes </h3></strong>
                 </TableCell>
                 <TableCell style={styleProps.styles.tableHeader}> 
-                  <strong><h3> CODES </h3></strong> 
-                </TableCell>
-                <TableCell style={styleProps.styles.tableHeader}> 
-                  <strong><h3> EDIT IN DHIS2 </h3></strong> 
+                  <strong><h3> Codes </h3></strong> 
                 </TableCell>
               </TableRow>
             </TableHead>

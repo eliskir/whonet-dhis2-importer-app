@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Card from 'material-ui/Card/Card';
-import CardText from 'material-ui/Card/CardText';
-import Close from '@material-ui/icons/Close';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import * as styleProps  from '../ui/Styles';
+import { Card, Modal, Button } from '@dhis2/ui-core';
 
 class HelpModal extends React.Component {
   constructor(props) {
@@ -23,16 +20,9 @@ class HelpModal extends React.Component {
   render() {
     return (
       <div>
-        <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
-
-        >
-          <Card style={styleProps.styles.cardModal}>
-              <CardText style={styleProps.styles.cardText}>
-              <h3 style={styleProps.styles.cardHeaderModal}> TRACKER EVENT - WHONET DATA IMPORT HELP <Close style={styleProps.styles.closeIcon} onClick={this.props.handleModal}/></h3>
+        <Modal medium open={this.state.open}>
+          <Modal.Content>
+              <h3 style={styleProps.styles.cardHeaderModal}> TRACKER EVENT - WHONET DATA IMPORT HELP </h3>
               <p style={styleProps.styles.modalInnerScroll}>
               <p> The Tracker Event Data loader handles bulk import of TEI event data based on a simple, easy-to-use csv template. </p>
               <h2> CSV Format </h2>
@@ -127,8 +117,10 @@ class HelpModal extends React.Component {
                 </ul>
 
               </p>
-              </CardText>
-          </Card>    
+          </Modal.Content> 
+          <Modal.Actions>
+            <Button type="button" onClick={this.props.handleModal}>Close</Button>
+          </Modal.Actions>   
         </Modal>
       </div>
     );
