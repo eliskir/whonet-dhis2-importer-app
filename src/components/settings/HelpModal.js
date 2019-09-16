@@ -54,7 +54,7 @@ class HelpModal extends React.Component {
                 <TableHead>
                   <TableRow>
                     <TableCell style={styleProps.styles.tableHeader}> 
-                      <strong> Patint Id </strong>
+                      <strong> Patient Id </strong>
                     </TableCell>
                     <TableCell style={styleProps.styles.tableHeader}> 
                       <strong> Sex  </strong> 
