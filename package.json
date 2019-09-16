@@ -47,7 +47,5 @@
     "eject": "react-scripts eject",
     "clean": "rimraf build"
   },
-  "devDependencies": {
-    "@dhis2/cli-style": "^4.1.1"
-  }
+  "devDependencies": {}
 }

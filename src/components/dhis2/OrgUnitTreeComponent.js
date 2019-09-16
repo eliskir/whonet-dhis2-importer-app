@@ -291,7 +291,7 @@ export default class OrgUnitTreeComponent extends React.Component {
   		let node =this.state.tree;
 			customTree = <CustomTree node={node}/>
 		}
-		 console.log("this.state.orgUnitLevel: ", this.state.userOrgUnitName);		
+		 //console.log("this.state.orgUnitLevel: ", this.state.userOrgUnitName);		
 
 		return (
       <div className="pageContainer">
@@ -301,7 +301,10 @@ export default class OrgUnitTreeComponent extends React.Component {
               	{customOrgUnit}	
               	{customTree}
           </Card>
-          <WhonetController d2={this.state.d2} orgUnitId={this.state.userOrgUnitId} orgUnit={this.state.userOrgUnitName}/>
+          {/*<WhonetController d2={this.state.d2} orgUnitId={this.state.userOrgUnitId} orgUnit={this.state.userOrgUnitName}/>*/}
+		  <WhonetController d2={this.state.d2} orgUnitId='ANGhR1pa8I5' orgUnit='India'/>
+
+		  
       </div>
 		);
 	}

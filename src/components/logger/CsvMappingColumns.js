@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from 'material-ui/Card/Card';
+//import Card from 'material-ui/Card/Card';
 import CardText from 'material-ui/Card/CardText';
 import * as styleProps  from '../ui/Styles';
 import * as config  from '../../config/Config';
@@ -9,6 +9,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { Tabs, Tab } from '@dhis2/d2-ui-core';
+import { Card } from '@dhis2/ui-core';
 import { 
     getDataStoreNameSpace,
 } from '../api/API';
@@ -104,61 +105,28 @@ export default class CsvMappingColumns extends React.Component {
     });  
 		return (
       <div>
-          <Card style={styleProps.styles.csvMappingCard}>
-              <CardText style={styleProps.styles.cardText}>
-              <Tabs> 
-                <Tab label='Mapping with CSV File'>
-                    <h3 style={styleProps.styles.cardHeaderMapping}>FOLLOWING MAPPINGS WERE FOUND IN CSV </h3>
-                    <p style={styleProps.styles.colors.color1}>{"Required Fields: " + config.requiredColumns} </p>
-                    <Table className={classes.table}>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell style={styleProps.styles.tableHeader}> 
-                            <strong><h3>S/N </h3></strong>
-                          </TableCell>
-                          <TableCell style={styleProps.styles.tableHeader}> 
-                            <strong><h3>YOUR SELECTED FILE HEADER </h3></strong>
-                          </TableCell>
-                          <TableCell style={styleProps.styles.tableHeader}> 
-                            <strong><h3> MAPPING CODE IN DHIS2 </h3></strong>
-                          </TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>            
-                        {dataValues}             
-                      </TableBody>          
-                    </Table>   
-                </Tab>
-                <Tab label='Your Settings Mapping'>
-                  <Table className={classes.table}>
-                    <TableHead>
-                      <TableRow>
-                        <TableCell style={styleProps.styles.tableHeader}> 
-                          <strong><h3>S/N </h3></strong>
-                        </TableCell>
-                        <TableCell style={styleProps.styles.tableHeader}> 
-                          <strong><h3> UID </h3></strong>
-                        </TableCell>
-                        <TableCell style={styleProps.styles.tableHeader}> 
-                          <strong><h3> Name </h3></strong>
-                        </TableCell>
-                        <TableCell style={styleProps.styles.tableHeader}> 
-                          <strong><h3> DHIS2 Code </h3></strong>
-                        </TableCell>
-                        <TableCell style={styleProps.styles.tableHeader}> 
-                          <strong><h3> Custom Map Code </h3></strong>
-                        </TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>            
-                      {labSettings}             
-                    </TableBody>          
-                  </Table> 
-                </Tab>
-              </Tabs>
-                 
-              </CardText>
-          </Card>
+        <Card className="importPreview">
+          <h3>The following mappings were found in the selected file </h3>
+          {/*<p style={styleProps.styles.colors.color1}>{"Required Fields: " + config.requiredColumns} </p>*/}
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <TableCell style={styleProps.styles.tableHeader}> 
+                  <strong><h3>S/N </h3></strong>
+                </TableCell>
+                <TableCell style={styleProps.styles.tableHeader}> 
+                  <strong><h3>Whonet (data element??) name </h3></strong>
+                </TableCell>
+                <TableCell style={styleProps.styles.tableHeader}> 
+                  <strong><h3> DHIS2 (data element??) name </h3></strong>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>            
+              {dataValues}             
+            </TableBody>          
+          </Table>         
+        </Card>
       </div>
 		);
 	}

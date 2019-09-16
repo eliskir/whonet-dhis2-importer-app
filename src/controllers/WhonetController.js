@@ -68,6 +68,7 @@ class WHONETFileReader extends React.Component {
       dataStoreNamespaceAttributes: [],
       settingsDropDown: "",
       feedBackToUser: undefined,
+      disableImportButton: true,
     };
     this.uploadCSVFile = this.uploadCSVFile.bind(this);
 
@@ -133,6 +134,9 @@ class WHONETFileReader extends React.Component {
         csvfile: event.target.files[0],
         fileFormatValue: splittedName
       });
+      if (!(typeof this.props.orgUnitId === 'undefined' || this.props.orgUnitId === null || this.props.orgUnitId === '')) {
+        this.setState({disableImportButton: false});
+      }
       /**
       * @{generateCsvMappingTable} returns the parsed records of selected csv file
       */
@@ -649,6 +653,7 @@ class WHONETFileReader extends React.Component {
 
             <div className="fileUploadCardBottomContent">
               <input
+                className="fileInput"
                 type="file"
                 ref={input => {
                   this.filesInput = input;
@@ -659,16 +664,13 @@ class WHONETFileReader extends React.Component {
                 accept=".csv"
               />
               <div style={this.state.orgUnit}></div>
-              <Button type='button' onClick={this.fileUploadPreAlert} primary>Import</Button>
+              <Button type='button' onClick={this.fileUploadPreAlert} primary disabled={this.state.disableImportButton}>Import</Button>
             </div>
 
             {modal}
           </Card>
         </div>
-        <Card className="resultCard">
-          <h3>Result </h3>
           {teiResponse}
-        </Card>
         {logger}
       </div>
 

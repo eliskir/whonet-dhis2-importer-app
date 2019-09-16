@@ -35,7 +35,7 @@ class MappingModal extends React.Component {
           </Modal.Content>
           <Modal.Actions>
             <Button type="button" onClick={this.props.handleModal}>Cancel</Button>
-            <Button primary>Flytt lagre-knapp hit</Button>
+            <Button primary>Put save button here</Button>
           </Modal.Actions>    
         </Modal>
       </div>
