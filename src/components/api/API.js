@@ -68,6 +68,7 @@ export const createTrackedEntity = async (trackedEntityJson) => {
         method: 'POST',
         headers: config.fetchOptions.headers,
         data: trackedEntityJson,
+        withCredentials: true,        
     }) 
 };
 
@@ -159,6 +160,7 @@ export const metaDataUpdate = async (api, jsonPayload) => {
         method: 'PUT',
         headers: config.fetchOptions.headers,
         data: jsonPayload,
+        withCredentials: true,        
     })   
 };
 
@@ -210,5 +212,6 @@ export const createDateStoreNameSpace = async (api, jsonPayload) => {
         method: 'POST',
         headers: config.fetchOptions.headers,
         data: jsonPayload,
+        withCredentials: true,        
     })   
 };

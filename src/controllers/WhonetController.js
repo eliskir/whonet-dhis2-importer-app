@@ -405,11 +405,18 @@ class WHONETFileReader extends React.Component {
             teiResponseString: JSON.stringify(responseData.data)
           });
           if (responseData.data.httpStatus === "OK") {
-            swal("Successfully uploaded WHONET data!", {
+            /*swal("Successfully uploaded WHONET data!", {
               icon: "success",
             });
             this.setState({
               loading: false
+            });*/
+            this.setState({
+              feedBackToUser:
+                <Modal small open>
+                  <Modal.Content>Your data was successfully uploaded</Modal.Content>
+                  <Modal.Actions><Button onClick={() => this.setState({ feedBackToUser: '' })}>Close</Button></Modal.Actions>
+                </Modal>
             });
           } else {
             swal("Sorry! Unable to import WHONET file!", {
@@ -485,6 +492,20 @@ class WHONETFileReader extends React.Component {
           </Modal>
       });
     } else {
+        this.setState({
+          feedBackToUser:
+            <Modal small open>
+              <Modal.Content>Are you sure you want to upload this file?</Modal.Content>
+              <Modal.Actions>
+                <ButtonStrip>
+                  <Button onClick={() => this.setState({ feedBackToUser: '' })}>Cancel</Button>
+                  <Button primary onClick={this.handleFileUpload}>Yes</Button>
+                </ButtonStrip>
+              </Modal.Actions>                
+            </Modal>
+        });
+      
+        /*
       swal({
         title: "Are you sure want to upload WHONET file?",
         //text: "Once uploaded, you will not be able to recover WHONET-DHIS2 data!",
@@ -515,10 +536,33 @@ class WHONETFileReader extends React.Component {
             });
           }
         });
+        */
+
     }
-
-
   }
+
+
+  handleFileUpload = () => {
+    this.setState({ feedBackToUser: '' });
+    checkOrgUnitInProgram(this.props.orgUnitId).then(result => {
+      if (typeof result !== 'undefined') {
+        if (result.length > 0) {
+          this.importCSVFile("import");
+        }
+      } 
+      else {
+        this.setState({
+          feedBackToUser:
+            <Modal small open>
+              <Modal.Content>File upload failed. Your selected org. unit is not assigned to this program. </Modal.Content>
+              <Modal.Actions><Button onClick={() => this.setState({ feedBackToUser: '' })}>Close</Button></Modal.Actions>
+            </Modal>
+        });
+      }
+    });
+  }
+
+
   /**
   * @returns isSettingModalOpen true
   */

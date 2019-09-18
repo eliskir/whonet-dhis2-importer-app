@@ -1,11 +1,12 @@
- export const baseUrl = 'http://apps.hispindia.org/amrtest/';
+ export const baseUrl = `${process.env.REACT_APP_DHIS2_BASE_URL}/`;
+ //export const baseUrl = 'http://apps.hispindia.org/amrtest/'
 // export const baseUrl = '../../../';
 //export const baseUrl = 'http://localhost:8080/dhis/';
+
 export const fetchOptions = {
   headers: { 
     Accept: 'application/json',
-    'Content-Type': 'application/json',
-    Authorization: "Basic " + btoa("julhas:Amr@1234")     
+    'Content-Type': 'application/json',   
   }
 };
 

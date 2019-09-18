@@ -5,11 +5,13 @@ import * as config  from '../../config/Config';
  * @param {String} endpoint
  * @returns Server response.
  */
+
+ 
 export const get = async (endpoint) =>{
 	return await (await axios(config.baseUrl + endpoint, {
         method: 'GET',
-        credentials: 'include',
-        headers: config.fetchOptions.headers
+		headers: config.fetchOptions.headers,
+		withCredentials: true,
     	}    
 	))
 }
@@ -24,7 +26,8 @@ export const post = async (endpoint, jsonPayload) =>{
 	return await (await axios(config.baseUrl + endpoint, {
 		method: 'POST',
 		headers: config.fetchOptions.headers,
-        body: JSON.stringify(jsonPayload),
+		body: JSON.stringify(jsonPayload),
+		withCredentials: true,		
     	}    
 	))
 }
